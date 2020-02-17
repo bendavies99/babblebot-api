@@ -3,6 +3,7 @@ import { ICommandDispatchedEvent } from './interfaces/command-dispatched-event.i
 import { ICommand } from './interfaces/command.interface';
 import { IModule } from './interfaces/module.interface';
 import { IApplication } from './interfaces';
+import 'reflect-metadata';
 /**
  * Represents the Application for BabbleBot-Server
  */
@@ -16,7 +17,7 @@ export class Application implements IApplication {
    */
   constructor(module: IModule) {
     this.module = module;
-    this.commands = [];
+    this.commands = [...Reflect.getMetadata('commands', this.module)];
     BabbleBot.registerApplication(this);
   }
   /**
