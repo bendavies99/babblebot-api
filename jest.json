@@ -1,0 +1,24 @@
+{
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "tsconfig.json"
+    }
+  },
+  "moduleFileExtensions": ["ts", "js"],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
+  "collectCoverageFrom": [
+    "src/**/*.ts"
+  ],
+  "testMatch": ["**/__tests__/**/*.spec.(ts|js)"],
+  "testEnvironment": "node"
+}

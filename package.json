@@ -1,0 +1,55 @@
+{
+  "name": "@babblebot/api",
+  "version": "1.0.0",
+  "description": "A JS/TS API Wrapper for BabbleBot-Server",
+  "main": "lib/index.js",
+  "private": false,
+  "directories": {
+    "lib": "lib"
+  },
+  "types": "./lib/index.d.ts",
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^25.1.0",
+    "semantic-release": "^17.0.3",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "tsc -p .",
+    "commit": "git-cz",
+    "test": "jest --config jest.json --coverage",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bendavies99/babblebot-api.git"
+  },
+  "keywords": [
+    "BabbleBot"
+  ],
+  "author": "Ben Davies",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/bendavies99/babblebot-api/issues"
+  },
+  "homepage": "https://github.com/bendavies99/babblebot-api#readme",
+  "engines": {
+    "node": ">=10.14.0"
+  },
+  "engineStrict": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
