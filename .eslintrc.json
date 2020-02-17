@@ -21,6 +21,7 @@
     "rules": {
         "object-curly-spacing": "off",
         "no-unused-vars": "off",
-        "indent": "off"
+        "indent": "off",
+        "new-cap": "off"
     }
 }

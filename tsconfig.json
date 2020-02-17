@@ -13,7 +13,13 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.collection"
+    ]
   },
-  "include": ["./src"],
+  "include": ["./src", "./__tests__"],
   "exclude": ["node_modules"]
 }

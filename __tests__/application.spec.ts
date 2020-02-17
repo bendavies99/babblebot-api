@@ -1,7 +1,10 @@
+import { IModule } from './../src/interfaces/module.interface';
 import { ICommandContext } from './../src/interfaces/command-context.interface';
 import { IApplication } from './../src/interfaces/application.interface';
 import { ICommand } from './../src/interfaces/command.interface';
 import { Application } from './../src/application';
+import { Command } from '../src/decorators';
+import 'reflect-metadata';
 
 // @ts-ignore
 
@@ -12,15 +15,53 @@ const BabbleBot = {
 // @ts-ignore
 global.BabbleBot = BabbleBot;
 
+/**
+ * Test module
+ */
+class TestModule implements IModule {
+  /**
+   * Returns the name of the module
+   * @return {string} the name of the module
+   */
+  getName(): string {
+    return 'Test';
+  }
+  /**
+   * Returns the version of the module
+   * @return {string} the version of the module
+   */
+  getVersion(): string {
+    return '';
+  }
+  /**
+   * Returns the name of the module
+   * @return {string} the name of the module
+   */
+  getAuthor(): string {
+    return '';
+  }
+
+  /**
+   * Command Test
+   * @param {IApplication} app the application instance
+   * @param {ICommandContext} cx the command context
+   * @return {string} the string to send back to the server
+   */
+  @Command(['testCommand'], 'Test', 'test', 'Discord')
+  test(app: IApplication, cx: ICommandContext) {
+    return 'Test from TestModule()';
+  }
+}
+
 describe('Application', () => {
   let app: Application;
 
   beforeEach(() => {
-    app = new Application({ name: 'Test' });
+    app = new Application(new TestModule());
   });
 
   it('Should return module from getModule', () => {
-    expect(app.getModule()).toMatchObject({ name: 'Test' });
+    expect(app.getModule().getName()).toBe('Test');
   });
 
   // eslint-disable-next-line max-len
@@ -35,7 +76,7 @@ describe('Application', () => {
       },
     } as ICommand;
     app.registerCommand(command);
-    expect(((app as any).commands as ICommand[]).length).toBe(1);
+    expect(((app as any).commands as ICommand[]).length).toBe(2);
     try {
       app.registerCommand(command);
       expect(true).toBe(false);
@@ -64,9 +105,9 @@ describe('Application', () => {
     }
 
     app.registerCommand(command);
-    expect(((app as any).commands as ICommand[]).length).toBe(1);
+    expect(((app as any).commands as ICommand[]).length).toBe(2);
     app.removeCommand(command);
-    expect(((app as any).commands as ICommand[]).length).toBe(0);
+    expect(((app as any).commands as ICommand[]).length).toBe(1);
   });
 
   it('Should dispatch a command when onDispatch is ran', () => {

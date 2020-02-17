@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 /**
  * Add two numbers together
  * @param {number} a - First number
@@ -7,3 +8,7 @@
 export const add = (a: number, b: number): number => {
   return a + b;
 };
+
+export * from './interfaces';
+export { Application } from './application';
+export * from './decorators';

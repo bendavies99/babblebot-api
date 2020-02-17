@@ -2,12 +2,12 @@
   "name": "@babblebot/api",
   "version": "1.0.0",
   "description": "A JS/TS API Wrapper for BabbleBot-Server",
-  "main": "lib/index.js",
+  "main": "lib/src/index.js",
   "private": false,
   "directories": {
     "lib": "lib"
   },
-  "types": "./lib/index.d.ts",
+  "types": "./lib/src/index.d.ts",
   "devDependencies": {
     "@types/jest": "^25.1.2",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
@@ -20,7 +20,9 @@
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
   "scripts": {
     "build": "tsc -p .",
     "commit": "git-cz",
